@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="/assets/css/main.css" />
+	<noscript><link rel="stylesheet" href="/assets/css/noscript.css" /></noscript>
+	<title>안전해-퀴즈</title>
+
+	<script>
+		//해설 출력
+	var answer = "<%=row.answer%>";
+	function checkAnswer(objButton){
+		
+		if(answer == objButton.value){
+			var str = '정답입니다.' + ' ' + '<%=row.whywrong%>';
+			document.getElementById('explanation').innerHTML= str;	
+			document.getElementById('explanation').style.color = "#00FF00";
+		}else{	
+			var str = '틀렸습니다.' + ' ' + '<%=row.whywrong%>';
+			document.getElementById('explanation').innerHTML= str;	
+			document.getElementById('explanation').style.color = "#FE2E2E";	}
+		
+	}
+	</script>
+
+</head>
+<div id="wrapper">
+
+				<!-- Header -->
+				<!-- Note: The "styleN" class below should match that of the banner element. -->
+					<header id="header" class="alt style2">
+						<a href="mainPage" class="logo"><strong>안전해</strong> </a>
+						<nav>
+							<a href="#menu">Menu</a>
+						</nav>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<ul class="links">
+							<li><a href="naturalDisaster">자연재난</a></li>
+							<li><a href="socialDisaster">사회재난</a></li>
+							<li><a href="quiz">퀴즈</a></li>
+							<li><a href="boardList">게시판</a></li>
+						</ul>
+						<ul class="actions stacked">
+							<li><a href="loginForm" class="button primary fit">로그인</a></li>
+							</ul>
+					</nav>
+					<section id="banner" class="style2">
+						<div class="inner">
+							<span class="image">
+								<img src="/images/pic07.jpg" alt="" />
+							</span>
+							<header class="major">
+								<h1>퀴즈</h1>
+							</header>
+							<div class="content">
+								<p>재난 안전 행동 요령을 잘 숙지하고 있는지 퀴즈를 통해서 확인 할 수 있습니다.</p>
+							</div>
+						</div>
+					</section>
+
+					
+
+<body>
+<br><br>
+<center style = "margin: 30px 200px">
+<h2 id="content" ><u> <%=row.quiz%> </u></h2>
+</center>
+
+	<div style="text-align:center;">
+
+		<input type="button" name="answer" class="primary" value="O" style="margin: 1px 30px" onclick="checkAnswer(this)"/>
+		<input type="button" name="answer" class="primary" value="X" style="margin: 1px 30px" onclick="checkAnswer(this)"/>
+
+	</div>
+
+
+	<div style ="margin: 50px 130px">
+		<h3 id="explanation"></h3>
+	</div>
+
+
+
+	<div style="text-align: center">
+			<input type="button" name="answer" value="이전 문제" style="margin: 1px 70px" onclick="preQuiz()"/>
+			<input type="button" name="answer" value="다음 문제" style="margin: 1px 70px" onclick="nextQuiz()"/>
+	</div>
+
+<!-- Scripts -->
+			<script src="/assets/js/jquery.min.js"></script>
+			<script src="/assets/js/jquery.scrolly.min.js"></script>
+			<script src="/assets/js/jquery.scrollex.min.js"></script>
+			<script src="/assets/js/browser.min.js"></script>
+			<script src="/assets/js/breakpoints.min.js"></script>
+			<script src="/assets/js/util.js"></script>
+			<script src="/assets/js/main.js"></script>
+
+</body>
+
+<script>
+
+	//다음 퀴즈
+	function nextQuiz(){
+		if(<%=row.num%> == 5) {	alert("마지막 퀴즈 입니다.");	
+		}else{	window.location='quiz?num=<%=row.num +1 %>'	}
+	}
+	
+	//이전 퀴즈
+	function preQuiz(){
+		if(<%=row.num%>==1){ alert("첫번째 퀴즈 입니다.");
+		}else { window.location='quiz?num=<%=row.num -1 %>'}
+	}
+
+</script>
+</html>

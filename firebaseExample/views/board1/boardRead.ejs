@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="/assets/css/main.css" />
+	<noscript><link rel="stylesheet" href="/assets/css/noscript.css" /></noscript>
+	<title>boardRead</title>
+
+	<style>
+table {
+	width: 900px;
+	margin-left: auto;
+	margin-right: auto;
+}
+table .subject {
+	width: 400px;
+}
+
+div#PageBlock {
+	width: 800px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
+</style>
+
+<script>
+function CheckPass(passwd, value){
+	var inputPW = prompt("비밀번호를 입력하세요");
+	if(passwd == inputPW){
+		if(value == 1) {	location.href = "boardDelete?brdno=<%=row.brdno%>";	}
+		if(value == 2) {	location.href = "boardForm?brdno=<%=row.brdno%>";	}
+	}else{
+		alert("비밀번호가 다릅니다");
+	}		
+}
+</script>
+</head>
+<body>
+<div id="wrapper">
+
+				<!-- Header -->
+				<!-- Note: The "styleN" class below should match that of the banner element. -->
+					<header id="header" class="alt style2">
+						<a href="mainPage" class="logo"><strong>안전해</strong> </a>
+						<nav>
+							<a href="#menu">Menu</a>
+						</nav>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<ul class="links">
+							<li><a href="naturalDisaster">자연재난</a></li>
+							<li><a href="socialDisaster">사회재난</a></li>
+							<li><a href="quiz">퀴즈</a></li>
+							<li><a href="boardList">게시판</a></li>
+						</ul>
+						<ul class="actions stacked">
+							<li><a href="loginForm" class="button primary fit">로그인</a></li>
+							</ul>
+					</nav>
+		<table border="1">
+			<caption>게시판</caption>
+			<colgroup>
+				<col width='15%' />
+				<col width='*%' />
+			</colgroup>
+			<tbody>
+				<tr>
+					<td>Writer</td> 
+					<td><%=row.brdwriter%></td> 
+				</tr>
+				<tr>
+					<td>Title</td> 
+					<td><%=row.brdtitle%></td> 
+				</tr>
+				<tr>
+					<td>Memo</td> 
+					<td><%=row.brdmemo%></td> 
+				</tr>
+			</tbody>
+		<td colspan="3">
+		<a href="#" class="button primary" onclick="history.back(-1)">List</a>
+		<a href="#" class="button primary" onclick="CheckPass(<%=row.brdpasswd%>, 1);">삭제</a>
+		<a href="#" class="button primary" onclick="CheckPass(<%=row.brdpasswd%>, 2);">수정</a>
+		</td>
+		</table>    
+		
+
+</div>
+<!-- Scripts -->
+			<script src="/assets/js/jquery.min.js"></script>
+			<script src="/assets/js/jquery.scrolly.min.js"></script>
+			<script src="/assets/js/jquery.scrollex.min.js"></script>
+			<script src="/assets/js/browser.min.js"></script>
+			<script src="/assets/js/breakpoints.min.js"></script>
+			<script src="/assets/js/util.js"></script>
+			<script src="/assets/js/main.js"></script>
+</body>
+</html>
