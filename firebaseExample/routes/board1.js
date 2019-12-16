@@ -10,14 +10,14 @@ router.get('/', function(req, res, next) {
  
   // Initialize Firebase
   var firebaseConfig = {
-    apiKey: "AIzaSyCBBrHSf0vMrbGEtmkQ2mGmSbcSe8ZvHPE",
+    apiKey: "{apiKey}",
     authDomain: "fir-example-9b8df.firebaseapp.com",
     databaseURL: "https://fir-example-9b8df.firebaseio.com",
     projectId: "fir-example-9b8df",
     storageBucket: "fir-example-9b8df.appspot.com",
-    messagingSenderId: "470955024419",
-    appId: "1:470955024419:web:bda1556d2cc631abd15196",
-    measurementId: "G-QBJS9T8PGX"
+    messagingSenderId: "",
+    appId: "",
+    measurementId: ""
   };
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
